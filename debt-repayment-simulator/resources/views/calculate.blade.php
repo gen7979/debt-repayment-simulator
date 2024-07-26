@@ -12,13 +12,13 @@
     @endif
     <form action="{{ route('calculate.post') }}" method="post">
         @csrf
-        <label for="principal">借入金額:</label>
+        <label for="principal">借入金額 (円):</label>
         <input type="number" name="principal" required><br>
         <label for="interest_rate">金利 (%):</label>
         <input type="number" step="0.01" name="interest_rate" required><br>
-        <label for="monthly_payment">毎月の支払額:</label>
+        <label for="monthly_payment">毎月の支払額 (円):</label>
         <input type="number" name="monthly_payment" required><br>
-        <button type="submit">シュミレーション</button>
+        <button type="submit">シュミレーション実行</button>
     </form>
     @if (isset($months))
         <p>It will take <strong>{{ $months }}</strong> months to repay the debt.</p>
