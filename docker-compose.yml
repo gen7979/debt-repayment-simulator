@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  app:
+    image: 'ghcr.io/laravel/sail-laravel:8.0'
+    environment:
+      WWWUSER: '1000'
+      LARAVEL_SAIL: '1'
+    volumes:
+      - .:/var/www/html
+    ports:
+      - '80:80'
+    networks:
+      - sail
+  mysql:
+    image: 'mysql:5.7'
+    environment:
+      MYSQL_DATABASE: 'debt_db'
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    volumes:
+      - 'mysql:/var/lib/mysql'
+    networks:
+      - sail
+networks:
+  sail:
+    driver: bridge
+volumes:
+  mysql:
