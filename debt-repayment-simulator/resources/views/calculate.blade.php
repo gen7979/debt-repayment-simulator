@@ -12,7 +12,7 @@
         @if (isset($error))
             <div class="alert alert-danger text-center">{{ $error }}</div>
         @endif
-        <form action="{{ route('calculate.post') }}" method="post" class="mt-4" id="debt-form">
+        <form action="{{ route('calculate') }}" method="get" class="mt-4" id="debt-form">
             @csrf
             <div id="debt-entries">
                 <div class="debt-entry">
@@ -34,9 +34,9 @@
             <button type="button" class="btn btn-secondary btn-block" id="add-company">+ 会社追加</button>
             <button type="submit" class="btn btn-primary btn-block mt-2">シュミレーション実行</button>
         </form>
-        @if (isset($months))
+        @if (isset($data))
             <div class="alert alert-success text-center mt-4">
-                借金返済には<strong>{{ $months }}</strong>ヶ月かかります。
+                借金返済には<strong>{{ $data['months'] }}</strong>ヶ月かかります。
             </div>
         @endif
     </div>
